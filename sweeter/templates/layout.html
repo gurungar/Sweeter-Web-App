@@ -1,0 +1,55 @@
+<html>
+<head>
+    {% if title %}
+        <title>Sweeter - {{ title }}</title>
+    {% else %}
+        <title>Sweeter</title>
+    {% endif%}
+</head>
+<body>
+
+        <div>
+            <h1><a href="/">Sweeter</a></h1>
+        <div>
+            <div class="navbar-nav mr-auto">
+                <a href="{{ url_for('index') }}">Home</a>
+                <a href="{{ url_for('index') }}">About</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div align="right">
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Register</a>
+            </div>
+        </div>
+        </div>
+    </nav>
+    </header>
+
+
+        <div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>
+<hr>
+          <div>
+            <h3>Other Information</h3>
+            <p>You can put any information here you'd like.
+              <ul>
+                <li>Latest Posts</li>
+                <li>Announcements</li>
+                <li>Calendars</li>
+                <li>etc</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+</body>
+</html>
